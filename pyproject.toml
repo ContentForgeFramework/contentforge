@@ -1,19 +1,59 @@
 [project]
 name = "contentforge"
-version = "0.1.0"
-description = ""
-authors = [
-    {name = "Your Name",email = "you@example.com"}
-]
+version = "0.0.1"
+description = "Cross-DCC SDK for professional pipeline development. Build production-ready plugins for Maya/Blender/Unreal/Unity and toolsets for Substance/Houdini with unified API abstraction, version tolerance mechanisms, and CI-ready automation workflows."
+
 readme = "README.md"
-requires-python = ">=3.12, <3.14"
+
+requires-python = ">=3.12,<3.14"
+
+license = { text = "MIT" }
+
+keywords = ["dcc", "plugin-development", "content-tools"]
+
+authors = [
+    { name = "Content Forge", email = "ContentForgeTeam@outlook.com" }
+]
+
+maintainers = [
+    { name = "Content Forge", email = "ContentForgeTeam@outlook.com" }
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Operating System :: OS Independent",
+]
+
 dependencies = [
     "click (>=8.1.8,<9.0.0)"
+
 ]
 
-[tool.poetry]
-packages = [{include = "contentforge", from = "src"}]
+[project.urls]
+Homepage = "https://contentforge.org"
+Documentation = "https://github.com/ContentForgeFramework/contentforge#readme"
+Repository = "https://github.com/ContentForgeFramework/contentforge"
+Issues = "https://github.com/ContentForgeFramework/contentforge/issues"
 
+[tool.poetry]
+include = [
+    "LICENSE",
+]
+
+exclude = [
+    "tests/**/*",
+    "docs/build",
+    "build/**/*",
+    ".github/workflows/*"
+]
+
+packages = [
+    { include = "contentforge", from = "src" }
+]
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.2.0"
