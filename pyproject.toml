@@ -1,13 +1,14 @@
 [project]
 name = "contentforge"
 version = "0.0.1"
-description = "Cross-DCC SDK for professional pipeline development. Build production-ready plugins for Maya/Blender/Unreal/Unity and toolsets for Substance/Houdini with unified API abstraction, version tolerance mechanisms, and CI-ready automation workflows."
+description = "A cross-DCC SDK empowering professional pipeline development across major digital content tools. Deliver production-ready plugins and toolsets for Maya, Blender, Unreal, Unity, Substance, and Houdini through a unified API abstraction, robust version tolerance, and CI-integrated automation workflows."
 
 readme = "README.md"
 
 requires-python = ">=3.12,<3.14"
 
-license = { text = "MIT" }
+# 将许可证从 MIT 修改为 Apache 2.0
+license = { text = "Apache-2.0" }
 
 keywords = ["dcc", "plugin-development", "content-tools"]
 
@@ -21,16 +22,12 @@ maintainers = [
 
 classifiers = [
     "Development Status :: 3 - Alpha",
-    "License :: OSI Approved :: MIT License",
+    # 更新对应的许可证分类信息
+    "License :: OSI Approved :: Apache Software License",
     "Programming Language :: Python :: 3 :: Only",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Operating System :: OS Independent",
-]
-
-dependencies = [
-    "click (>=8.1.8,<9.0.0)"
-
 ]
 
 [project.urls]
@@ -63,15 +60,12 @@ tomli = "^2.2.1"
 python-dotenv = "^1.1.0"
 mypy = "^1.15.0"
 
-
 [tool.poetry.group.test.dependencies]
 pytest = "^8.3.5"
 pytest-cov = "^6.1.1"
 
-
 [tool.poetry.group.ui.dependencies]
 pyside6 = "^6.9.0"
-
 
 [tool.poetry.group.doc.dependencies]
 mkdocs = "^1.6.1"
@@ -86,6 +80,55 @@ mkdocs-glightbox = "^0.4.0"
 pymdown-extensions = "^10.14.3"
 mkdocs-autorefs = "^1.4.1"
 griffe = "^1.7.2"
+
+[tool.black]
+line-length = 120
+target-version = ["py312"]
+include = '\.pyi?$'
+skip-string-normalization = true
+skip-magic-trailing-comma = true
+
+[tool.isort]
+profile = "black"
+line_length = 120
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+indent = 4
+lines_after_imports = 2
+lines_between_types = 2
+combine_as_imports = true
+case_sensitive = true
+skip = ["docs"]
+
+[tool.mypy]
+"mkdocs_gen_files.*" = { ignore_missing_imports = true }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+addopts = """
+    -v
+    --cov=contentforge
+    --cov-report=term-missing
+    --cov-report=html:coverage_html
+    --cov-fail-under=85
+    --debug
+    """
+
+[tool.poetry.scripts]
+artisan = "contentforge.cli:main"
+art = "contentforge.cli:main"
+art-init = "contentforge.cli:init"
+art-make = "contentforge.cli:make"
+art-test = "contentforge.cli:test"
+art-docs = "contentforge.cli:docs"
+art-pre = "contentforge.cli:pre"
+art-build = "contentforge.cli:build"
+art-dev = "contentforge.cli:dev"
+art-run = "contentforge.cli:run"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

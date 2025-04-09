@@ -1,9 +1,11 @@
-site_name: contentforge Documentation
+site_name: Content Forge Documentation
+site_description: Documentation for the Content Forge cross-DCC SDK.
+site_author: Content Forge Team
 
 theme:
     name: material
     features:
-        - navigation.tabs
+
         - navigation.sections
         - navigation.expand
         - search.suggest
@@ -22,6 +24,56 @@ theme:
             toggle:
                 icon: material/brightness-4
                 name: Switch to light mode
+nav:
+    -   Home: index.md
+    -   Overview:
+            -   Software Overview: overview/software-overview.md
+            -   Software Architecture: overview/software-architecture.md
+            -   Key Terms: overview/key-terms.md
+    -   Release Notes And History:
+            -   Current Version: release-and-history/current-version.md
+            -   Previous Versions: release-and-history/previous-versions.md
+            -   Upcoming Releases: release-and-history/upcoming-releases.md
+            -   Release History: release-and-history/release-history.md
+    -   Getting Started:
+            -   System Requirements: getting-started/system-requirements.md
+            -   Installation Guide: getting-started/installation-guide.md
+            -   First Run: getting-started/first-run.md
+            -   Quick Start: getting-started/quick-start.md
+    -   User Guide:
+            -   Configuration: user-guide/configuration.md
+            -   Basic Operations: user-guide/basic-operations.md
+            -   Advanced Features: user-guide/advanced-features.md
+    -   Best Practices:
+            -   Performance Optimization: best-practices/performance-optimization.md
+            -   Security Recommendations: best-practices/security-recommendations.md
+            -   Deployment And Application: best-practices/deployment-and-application.md
+    -   Features And Functions:
+            -   Core Features: features-and-functions/core-features.md
+            -   Auxiliary Features: features-and-functions/auxiliary-features.md
+            -   Command Line: features-and-functions/command-line.md
+    -   Troubleshooting:
+            -   Common Issues: troubleshooting/common-issues.md
+            -   FAQ: troubleshooting/faq.md
+            -   Error Codes: troubleshooting/error-codes.md
+    -   Glossary:
+            -   Abbreviations: glossary/abbreviations.md
+            -   Terminology: glossary/terminology.md
+    -   Appendix:
+            -   License: appendix/license.md
+            -   References: appendix/references.md
+            -   Technical Specifications: appendix/technical-specifications.md
+            -   Third-Party Libraries: appendix/third-party-libraries.md
+    -   Feedback And Support:
+            -   Bug Reports: feedback-and-support/bug-reports.md
+            -   Feature Requests: feedback-and-support/feature-requests.md
+            -   Contact Us: feedback-and-support/contact-us.md
+            -   Community: feedback-and-support/community.md
+            -   Support: feedback-and-support/support.md
+    -   Contributions:
+            -   Contributor List: contributions/contributor-list.md
+            -   Special Thanks: contributions/special-thanks.md
+
 
 plugins:
     - search
@@ -30,15 +82,15 @@ plugins:
     -   mkdocstrings:
             handlers:
                 python:
-                    paths: [ vendor/contentforge ]
+                    paths: [ src/contentforge ]
                     options:
                         show_source: true
                         show_root_heading: true
-    -   gen-files:
-            scripts:
-                - vendor/gendoc/gen_ref_pages.py  # 生成API参考文档的脚本
-    - literate-nav
-    - section-index
+#    -   gen-files:
+#            scripts:
+#                -   # 生成API参考文档的脚本
+    -    literate-nav
+    -    section-index
 
 markdown_extensions:
     -   pymdownx.highlight:
