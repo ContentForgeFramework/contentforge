@@ -4,7 +4,7 @@
 ![GitHub](https://img.shields.io/badge/GitHub-ContentForge-blue?style=flat-square&logo=github)
 ![PyPI](https://img.shields.io/badge/PyPI-ContentForge-red?style=flat-square&logo=pypi)
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue?style=flat-square&logo=python)
-![Version](https://img.shields.io/badge/Version-0.0.1-orange?style=flat-square)
+![Version](https://img.shields.io/badge/Version-0.0.1%20building-orange?style=flat-square&logo=v)
 ![logo](docs/assets/images/logo.png)
 
 ## Overview
