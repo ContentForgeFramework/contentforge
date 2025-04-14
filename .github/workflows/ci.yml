@@ -27,7 +27,7 @@ jobs:
                     poetry lock
                     poetry config virtualenvs.create false
                     # 安装默认依赖和开发组依赖（包含测试、lint 等工具）
-                    poetry install --with dev
+                    poetry install --with dev,test
 
             -   name: Lint Code
                 run: |
