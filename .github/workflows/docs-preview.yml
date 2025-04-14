@@ -1,38 +1,39 @@
 name: Documentation Preview
 
 on:
-  pull_request:
-    paths:
-      - "docs/**"
-      - "mkdocs.yml"
-      - "**/*.md"
+    pull_request:
+        paths:
+            - "docs/**"
+            - "mkdocs.yml"
+            - "**/*.md"
 
 jobs:
-  preview:
-    runs-on: ubuntu-latest
+    preview:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+        steps:
+            -   name: Checkout repository
+                uses: actions/checkout@v3
 
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
+            -   name: Set up Python 3.12
+                uses: actions/setup-python@v4
+                with:
+                    python-version: '3.12'
 
-      - name: Install Poetry and doc dependencies
-        run: |
-          pip install poetry
-          poetry config virtualenvs.create false
-          # 安装包含文档生成依赖的组
-          poetry install --with doc
+            -   name: Install Poetry and doc dependencies
+                run: |
+                    pip install poetry
+                    poetry lock
+                    poetry config virtualenvs.create false
+                    # 安装包含文档生成依赖的组
+                    poetry install --with doc
 
-      - name: Build Documentation
-        run: mkdocs build
+            -   name: Build Documentation
+                run: mkdocs build
 
-      - name: Deploy Preview to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages-preview
-          publish_dir: ./site
+            -   name: Deploy Preview to GitHub Pages
+                uses: peaceiris/actions-gh-pages@v3
+                with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    publish_branch: gh-pages-preview
+                    publish_dir: ./site

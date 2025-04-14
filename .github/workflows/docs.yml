@@ -1,41 +1,43 @@
 name: Deploy Documentation
 
 on:
-  # Trigger the workflow when documentation-related files in the main branch are modified
-  push:
-    branches: [ "main" ]
-    paths:
-      - "**/*.md"
-      - "docs/**"
-      - "mkdocs.yml"
-      - ".github/workflows/deploy_docs.yml"
+    # Trigger the workflow when documentation-related files in the main branch are modified
+    push:
+        branches: [ "main" ]
+        paths:
+            - "**/*.md"
+            - "docs/**"
+            - "mkdocs.yml"
+            - ".github/workflows/deploy_docs.yml"
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    deploy:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+        steps:
+            -   name: Checkout repository
+                uses: actions/checkout@v3
 
-      - name: Setup Python 3.12
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.12'
+            -   name: Setup Python 3.12
+                uses: actions/setup-python@v4
+                with:
+                    python-version: '3.12'
 
-      - name: Install Poetry and Dependencies
-        run: |
-          pip install poetry
-          # Disable virtual environments and install dependencies directly in the runner
-          poetry config virtualenvs.create false
-          # Install the project and the dependency group that includes documentation dependencies ([tool.poetry.group.doc.dependencies])
-          poetry install --with doc
+            -   name: Install Poetry and Dependencies
+                run: |
+                    pip install poetry
+                    poetry lock
+                    # Disable virtual environments and install dependencies directly in the runner
+                    poetry config virtualenvs.create false
+                    # Install the project and the dependency group that includes documentation dependencies ([tool.poetry.group.doc.dependencies])
+                    poetry install --with doc
 
-      - name: Build Documentation with MkDocs
-        run: mkdocs build
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site
+            -   name: Build Documentation with MkDocs
+                run: mkdocs build
+
+            -   name: Deploy to GitHub Pages
+                uses: peaceiris/actions-gh-pages@v3
+                with:
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    publish_dir: ./site
