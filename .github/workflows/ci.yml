@@ -30,7 +30,7 @@ jobs:
 
             -   name: Install typing stubs
                 run: |
-                    poetry add --dev types-click types-mkdocs-gen-files
+                    poetry add --dev types-click
 
             -   name: Lint Code
                 run: |
