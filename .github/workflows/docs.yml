@@ -1,51 +1,55 @@
-name: Deploy Documentation
+name: Build Documentation
 
 on:
     push:
-        branches:
-            - main
+        branches: [ main ]
         paths:
             - '**/*.md'
             - 'docs/**'
             - 'mkdocs.yml'
-            - '.github/workflows/deploy_docs.yml'
-    workflow_dispatch:     # 可选：手动部署
+    pull_request:
+    workflow_dispatch:
 
 jobs:
-    deploy:
+    build-docs:
+        name: Build MkDocs Site
         runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                python-version: [ '3.12' ]
 
-        # 可选：缓存 Poetry & pip
         steps:
-            -   uses: actions/cache@v3
-                with:
-                    path: ~/.cache/pypoetry
-                    key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
-            -   uses: actions/cache@v3
-                with:
-                    path: ~/.cache/pip
-                    key: ${{ runner.os }}-pip-${{ hashFiles('**/poetry.lock') }}
-
             -   name: Checkout repository
                 uses: actions/checkout@v3
 
-            # 推荐：用官方安装脚本或 setup-poetry
+            -   name: Set up Python ${{ matrix.python-version }}
+                uses: actions/setup-python@v4
+                with:
+                    python-version: ${{ matrix.python-version }}
+
+            -   name: Cache Poetry & pip
+                uses: actions/cache@v3
+                with:
+                    path: |
+                        ~/.cache/pypoetry
+                        ~/.cache/pip
+                    key: ${{ runner.os }}-poetry-pip-${{ hashFiles('**/poetry.lock') }}
+
             -   name: Install Poetry
                 run: |
                     curl -sSL https://install.python-poetry.org | python3 -
                     echo "::add-path::$HOME/.local/bin"
 
-            -   name: Install dependencies
+            -   name: Install documentation dependencies
                 run: |
                     poetry config virtualenvs.create false
                     poetry install --with doc
 
-            -   name: Build Documentation with MkDocs
-                run: mkdocs build
+            -   name: Build documentation with MkDocs
+                run: poetry run mkdocs build --clean
 
-            -   name: Deploy to GitHub Pages
-                uses: peaceiris/actions-gh-pages@v3
+            -   name: Upload MkDocs site as artifact
+                uses: actions/upload-artifact@v3
                 with:
-                    github_token: ${{ secrets.GITHUB_TOKEN }}
-                    publish_dir: ./site
-                    allow_empty_commit: true       # 可选：避免无改动时失败
+                    name: mkdocs-site
+                    path: site/
