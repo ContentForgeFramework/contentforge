@@ -2,8 +2,9 @@ name: Continuous Integration
 
 on:
     push:
-        branches: [ "main" ]
+        branches: [ main ]
     pull_request:
+    workflow_dispatch:    # 可选：手动触发
 
 jobs:
     build-and-test:
@@ -24,10 +25,12 @@ jobs:
             -   name: Install Poetry and project dependencies
                 run: |
                     pip install poetry
-                    poetry lock
                     poetry config virtualenvs.create false
-                    # 安装默认依赖和开发组依赖（包含测试、lint 等工具）
                     poetry install --with dev,test
+
+            -   name: Install typing stubs
+                run: |
+                    poetry add --dev types-click types-mkdocs-gen-files
 
             -   name: Lint Code
                 run: |
@@ -39,6 +42,5 @@ jobs:
                 run: poetry run pytest --maxfail=1 --disable-warnings -q
 
             -   name: Generate Coverage Report (HTML)
-                if: success()  # Generate coverage report upon successful tests
-                run: |
-                    poetry run pytest --cov=contentforge --cov-report=html
+                if: success()
+                run: poetry run pytest --cov=contentforge --cov-report=html

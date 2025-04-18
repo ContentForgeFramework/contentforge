@@ -1,37 +1,44 @@
 name: Deploy Documentation
 
 on:
-    # Trigger the workflow when documentation-related files in the main branch are modified
     push:
-        branches: [ "main" ]
+        branches:
+            - main
         paths:
-            - "**/*.md"
-            - "docs/**"
-            - "mkdocs.yml"
-            - ".github/workflows/deploy_docs.yml"
+            - '**/*.md'
+            - 'docs/**'
+            - 'mkdocs.yml'
+            - '.github/workflows/deploy_docs.yml'
+    workflow_dispatch:     # 可选：手动部署
 
 jobs:
     deploy:
         runs-on: ubuntu-latest
 
+        # 可选：缓存 Poetry & pip
         steps:
+            -   uses: actions/cache@v3
+                with:
+                    path: ~/.cache/pypoetry
+                    key: ${{ runner.os }}-poetry-${{ hashFiles('**/poetry.lock') }}
+            -   uses: actions/cache@v3
+                with:
+                    path: ~/.cache/pip
+                    key: ${{ runner.os }}-pip-${{ hashFiles('**/poetry.lock') }}
+
             -   name: Checkout repository
                 uses: actions/checkout@v3
 
-            -   name: Setup Python 3.12
-                uses: actions/setup-python@v4
-                with:
-                    python-version: '3.12'
-
-            -   name: Install Poetry and Dependencies
+            # 推荐：用官方安装脚本或 setup-poetry
+            -   name: Install Poetry
                 run: |
-                    pip install poetry
-                    poetry lock
-                    # Disable virtual environments and install dependencies directly in the runner
-                    poetry config virtualenvs.create false
-                    # Install the project and the dependency group that includes documentation dependencies ([tool.poetry.group.doc.dependencies])
-                    poetry install --with doc
+                    curl -sSL https://install.python-poetry.org | python3 -
+                    echo "::add-path::$HOME/.local/bin"
 
+            -   name: Install dependencies
+                run: |
+                    poetry config virtualenvs.create false
+                    poetry install --with doc
 
             -   name: Build Documentation with MkDocs
                 run: mkdocs build
@@ -41,3 +48,4 @@ jobs:
                 with:
                     github_token: ${{ secrets.GITHUB_TOKEN }}
                     publish_dir: ./site
+                    allow_empty_commit: true       # 可选：避免无改动时失败
