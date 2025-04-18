@@ -73,7 +73,7 @@ poetry artisan init
 ### Documentation
 
 The documentation for Content Forge is hosted on GitHub Pages. You can find it at the following link:
-[Content Forge Documentation](https://contentforgeframework.github.io/contentforge)
+[Content Forge Documentation](https://contentforgeframework.github.io/contentforge/)
 
 ## Contributing
 
