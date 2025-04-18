@@ -2,24 +2,24 @@
 # -*- coding: utf-8 -*-
 # =============================================================================================================
 #
-# ContentForge package initializer.
+# Defines metadata for the ContentForge package.
 #
-# This file marks the directory as a Python package and can be used to perform package-level initialization.
-# It may also be used to expose key modules or functions at the package level.
+# This file contains essential information such as version, name, author, and licensing details
+# that describe the ContentForge package and can be accessed programmatically.
 #
-# @filename   __init__.py
-# @path       src\contentforge\__init__.py
+# @filename   __about__.py
+# @path       src\contentforge\__about__.py
 # @project    ContentForge
 # @encoding   utf-8
 #
 # @product    PyCharm
 # @author     Content Forge
 # @email      mailto:ContentForgeTeam@outlook.com
-# @time       2025/04/18 21:51
+# @time       2025/04/18 21:53
 #
 # @version    git
-# @record     2025/04/18 21:52 <Content Forge> Create file.
-#             2025/04/18 21:53 <Content Forge> Update header comment.
+# @record     2025/04/18 21:54 <Content Forge> Create file.
+#             2025/04/18 21:55 <Content Forge> Update header comment.
 #             CURRENT_USER_NAME description
 #
 # @license    https://www.apache.org/licenses/LICENSE-2.0 Apache-2.0 License
@@ -33,22 +33,44 @@
 #             ContentForge is a trademark of ContentForge.org.
 #             All other trademarks and registered trademarks are the property of their respective owners.
 #
-#             For permissions, please contact mailto:ContentForgeTeam@outlook.com.
+#             For permissions, please contact EMAIL.
 # =============================================================================================================
 from __future__ import print_function, unicode_literals
 
 # =============================================================================================================
 # Standard Python Imports
 # =============================================================================================================
-import os  # noqa: F401 - Importing os module for operating system dependent functionality
-import sys  # noqa: F401 - Importing sys module for system-specific parameters and functions
+import os  # noqa: F401 - Operating system interfaces (imported but not used here)
+import sys  # noqa: F401 - System-specific parameters and functions (imported but not used here)
+
+
+# =============================================================================================================
+# Package Metadata
+# =============================================================================================================
+
+# Version of the ContentForge package
+VERSION = "0.0.1"
+
+# Name of the package
+NAME = "contentforge"
+
+# Short description of the package purpose
+DESCRIPTION = "A cross-DCC SDK empowering professional pipeline development across major digital content tools."
+
+# Author or organization responsible for the package
+AUTHOR = "Content Forge"
+
+# Contact email for the package maintainers
+EMAIL = "mailto:ContentForgeTeam@outlook.com"
+
+# License under which the package is distributed
+LICENSE = "Apache-2.0"
 
 
 # =============================================================================================================
 # Script Execution
 # =============================================================================================================
-# This block ensures that the script runs as a standalone program.
+# This block allows the module to be run as a standalone script.
 if __name__ == '__main__':
-    # Placeholder for future code execution
-    # Currently, nothing is implemented when the script is executed directly.
+    # No standalone functionality implemented currently.
     pass

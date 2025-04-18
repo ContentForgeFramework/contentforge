@@ -2,24 +2,24 @@
 # -*- coding: utf-8 -*-
 # =============================================================================================================
 #
-# ContentForge package initializer.
+# Entry point for the ContentForge command line interface.
 #
-# This file marks the directory as a Python package and can be used to perform package-level initialization.
-# It may also be used to expose key modules or functions at the package level.
+# This script serves as the main entry point for executing the ContentForge CLI,
+# which provides various functionalities for content generation and manipulation.
 #
-# @filename   __init__.py
-# @path       src\contentforge\__init__.py
+# @filename   __main__.py
+# @path       src\contentforge\cli\__main__.py
 # @project    ContentForge
 # @encoding   utf-8
 #
 # @product    PyCharm
 # @author     Content Forge
 # @email      mailto:ContentForgeTeam@outlook.com
-# @time       2025/04/18 21:51
+# @time       2025/04/18 22:06
 #
 # @version    git
-# @record     2025/04/18 21:52 <Content Forge> Create file.
-#             2025/04/18 21:53 <Content Forge> Update header comment.
+# @record     2025/04/18 22:12 <Content Forge> Create file.
+#             2025/04/18 22:12 <Content Forge> Update header comment.
 #             CURRENT_USER_NAME description
 #
 # @license    https://www.apache.org/licenses/LICENSE-2.0 Apache-2.0 License
@@ -40,15 +40,15 @@ from __future__ import print_function, unicode_literals
 # =============================================================================================================
 # Standard Python Imports
 # =============================================================================================================
-import os  # noqa: F401 - Importing os module for operating system dependent functionality
-import sys  # noqa: F401 - Importing sys module for system-specific parameters and functions
+import os  # noqa: F401
+import sys  # noqa: F401
+
+from . import main  # Importing the main module that contains the core functionality of the CLI.
 
 
 # =============================================================================================================
 # Script Execution
 # =============================================================================================================
-# This block ensures that the script runs as a standalone program.
 if __name__ == '__main__':
-    # Placeholder for future code execution
-    # Currently, nothing is implemented when the script is executed directly.
-    pass
+    # Execute the main function from the main module when this script is run directly.
+    main()

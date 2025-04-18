@@ -2,24 +2,25 @@
 # -*- coding: utf-8 -*-
 # =============================================================================================================
 #
-# ContentForge package initializer.
+# Development command for ContentForge CLI.
 #
-# This file marks the directory as a Python package and can be used to perform package-level initialization.
-# It may also be used to expose key modules or functions at the package level.
+# This script provides a command-line interface command to run the
+# ContentForge in development mode, allowing developers to test and
+# debug their applications.
 #
-# @filename   __init__.py
-# @path       src\contentforge\__init__.py
+# @filename   dev.py
+# @path       src\contentforge\cli\commands\dev.py
 # @project    ContentForge
 # @encoding   utf-8
 #
 # @product    PyCharm
 # @author     Content Forge
 # @email      mailto:ContentForgeTeam@outlook.com
-# @time       2025/04/18 21:51
+# @time       2025/04/18 22:51
 #
 # @version    git
-# @record     2025/04/18 21:52 <Content Forge> Create file.
-#             2025/04/18 21:53 <Content Forge> Update header comment.
+# @record     2025/04/18 23:01 <Content Forge> Create file.
+#             2025/04/18 23:01 <Content Forge> Update header comment.
 #             CURRENT_USER_NAME description
 #
 # @license    https://www.apache.org/licenses/LICENSE-2.0 Apache-2.0 License
@@ -40,15 +41,28 @@ from __future__ import print_function, unicode_literals
 # =============================================================================================================
 # Standard Python Imports
 # =============================================================================================================
-import os  # noqa: F401 - Importing os module for operating system dependent functionality
-import sys  # noqa: F401 - Importing sys module for system-specific parameters and functions
+import os  # noqa: F401 - Standard library for operating system interfaces
+import sys  # noqa: F401 - Standard library for system-specific parameters and functions
+
+import click  # Click is a package for creating command-line interfaces
+
+
+@click.command(name="dev", help="Run the development mode.")
+def dev():
+    """
+    Run the development mode command.
+
+    This command outputs a message indicating that the development mode
+    is currently running. It can be extended to include additional
+    functionality for development tasks.
+    """
+    # Output message to indicate that the development mode is active
+    click.echo("Start running development mode...")
 
 
 # =============================================================================================================
 # Script Execution
 # =============================================================================================================
-# This block ensures that the script runs as a standalone program.
 if __name__ == '__main__':
-    # Placeholder for future code execution
-    # Currently, nothing is implemented when the script is executed directly.
-    pass
+    # Execute the development command when this script is run directly
+    dev()

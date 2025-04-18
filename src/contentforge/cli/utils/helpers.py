@@ -2,24 +2,25 @@
 # -*- coding: utf-8 -*-
 # =============================================================================================================
 #
-# ContentForge package initializer.
+# Utility functions for ContentForge CLI.
 #
-# This file marks the directory as a Python package and can be used to perform package-level initialization.
-# It may also be used to expose key modules or functions at the package level.
+# This module contains helper functions that provide various utility
+# functionalities for the ContentForge command-line interface, promoting
+# code reusability and organization.
 #
-# @filename   __init__.py
-# @path       src\contentforge\__init__.py
+# @filename   helpers.py
+# @path       src\contentforge\cli\utils\helpers.py
 # @project    ContentForge
 # @encoding   utf-8
 #
 # @product    PyCharm
 # @author     Content Forge
 # @email      mailto:ContentForgeTeam@outlook.com
-# @time       2025/04/18 21:51
+# @time       2025/04/18 23:13
 #
 # @version    git
-# @record     2025/04/18 21:52 <Content Forge> Create file.
-#             2025/04/18 21:53 <Content Forge> Update header comment.
+# @record     2025/04/18 23:15 <Content Forge> Create file.
+#             2025/04/18 23:15 <Content Forge> Update header comment.
 #             CURRENT_USER_NAME description
 #
 # @license    https://www.apache.org/licenses/LICENSE-2.0 Apache-2.0 License
@@ -40,15 +41,13 @@ from __future__ import print_function, unicode_literals
 # =============================================================================================================
 # Standard Python Imports
 # =============================================================================================================
-import os  # noqa: F401 - Importing os module for operating system dependent functionality
-import sys  # noqa: F401 - Importing sys module for system-specific parameters and functions
+import os  # noqa: F401 - Standard library for operating system interfaces
+import sys  # noqa: F401 - Standard library for system-specific parameters and functions
 
 
 # =============================================================================================================
 # Script Execution
 # =============================================================================================================
-# This block ensures that the script runs as a standalone program.
 if __name__ == '__main__':
-    # Placeholder for future code execution
-    # Currently, nothing is implemented when the script is executed directly.
+    # Execute some test code or functionality when this script is run directly
     pass
