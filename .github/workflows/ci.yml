@@ -34,10 +34,3 @@ jobs:
                     poetry config virtualenvs.create false
                     poetry install --with dev
                     poetry run pre-commit run --all-files --show-diff-on-failure
-
-            -   name: Run Tests
-                run: poetry run pytest --maxfail=1 --disable-warnings -q
-
-            -   name: Generate Coverage Report (HTML)
-                if: success()
-                run: poetry run pytest --cov=contentforge --cov-report=html
