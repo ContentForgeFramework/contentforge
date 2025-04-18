@@ -27,29 +27,18 @@ jobs:
                 with:
                     python-version: ${{ matrix.python-version }}
 
-            -   name: Cache Poetry & pip
-                uses: actions/cache@v3
-                with:
-                    path: |
-                        ~/.cache/pypoetry
-                        ~/.cache/pip
-                    key: ${{ runner.os }}-poetry-pip-${{ hashFiles('**/poetry.lock') }}
-
-            -   name: Install Poetry
+            -   name: Install Poetry and project dependencies
                 run: |
-                    curl -sSL https://install.python-poetry.org | python3 -
-                    echo "::add-path::$HOME/.local/bin"
-
-            -   name: Install documentation dependencies
-                run: |
+                    pip install poetry
                     poetry config virtualenvs.create false
                     poetry install --with doc
 
             -   name: Build documentation with MkDocs
                 run: poetry run mkdocs build --clean
 
-            -   name: Upload MkDocs site as artifact
-                uses: actions/upload-artifact@v3
+            -   name: Deploy documentation to GitHub Pages
+                uses: peaceiris/actions-gh-pages@v3
                 with:
-                    name: mkdocs-site
-                    path: site/
+                    github_token: ${{ secrets.GITHUB_TOKEN }}
+                    publish_dir: site
+                    publish_branch: gh-pages
