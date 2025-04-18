@@ -1,10 +1,9 @@
-name: Continuous Integration
+name: Test
 
 on:
-    push:
-        branches: [ main ]
-    pull_request:
-    workflow_dispatch:    # 可选：手动触发
+  push:
+  pull_request:
+  workflow_dispatch:    # 可选：手动触发
 
 jobs:
     build-and-test:
@@ -26,13 +25,13 @@ jobs:
                 run: |
                     pip install poetry
                     poetry config virtualenvs.create false
-                    poetry install --with dev
+                    poetry install --with test
 
             -   name: Run Pre‑commit hooks
                 run: |
                     pip install poetry
                     poetry config virtualenvs.create false
-                    poetry install --with dev
+                    poetry install --with test
                     poetry run pre-commit run --all-files --show-diff-on-failure
 
             -   name: Run Tests
