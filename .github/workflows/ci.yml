@@ -28,12 +28,11 @@ jobs:
                     poetry config virtualenvs.create false
                     poetry install --with dev,test
 
-            -   name: Install typing stubs
+            -   name: Run Pre‑commit hooks
                 run: |
-                    poetry add --dev types-click
-
-            -   name: Lint Code
-                run: |
+                    pip install poetry
+                    poetry config virtualenvs.create false
+                    poetry install --with dev
                     poetry run pre-commit run --all-files --show-diff-on-failure
 
             -   name: Run Tests
