@@ -41,6 +41,7 @@ development and deployment processes.
 | ZBrush             | ![Version](http://img.shields.io/badge/Version-Plan-orange?style=flat-square)    |
 
 ### Python Version
+
 | Version | Status                                                                         |
 |---------|--------------------------------------------------------------------------------|
 | 3.12    | ![Version](http://img.shields.io/badge/Version-3.12%2B-blue?style=flat-square) |
@@ -57,7 +58,9 @@ You can install Content Forge using pip. Open a terminal and run the following c
 ```bash
 pip install content-forge
 ```
-Want to get more information about the installation? Check out the [Installation Guide](https://contentforgeframework.github.io/contentforge/getting-started/installation-guide/).
+
+Want to get more information about the installation? Check out
+the [Installation Guide](https://contentforgeframework.github.io/contentforge/getting-started/installation-guide/).
 
 ## Usage
 
@@ -68,11 +71,14 @@ poetry artisan init
 ## Features
 
 ### Documentation
+
 The documentation for Content Forge is hosted on GitHub Pages. You can find it at the following link:
-[Content Forge Documentation](https://contentforgeframework.github.io/contentforge/index.html)
+[Content Forge Documentation](https://contentforgeframework.github.io/contentforge)
 
 ## Contributing
+
 We welcome contributions to Content Forge! If you would like to contribute, please follow these steps:
+
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix.
 3. Make your changes and commit them with a descriptive message.
@@ -83,15 +89,21 @@ We welcome contributions to Content Forge! If you would like to contribute, plea
 8. Once approved, your changes will be merged into the main repository.
 9. Celebrate your contribution to Content Forge!
 10. Join our community on Discord to discuss your ideas and get help from other developers.
-11. Check out our [Contributing Guide](https://contentforgeframework.github.io/contentforge/contributing/) for more details on how to contribute.
-12. Read our [Code of Conduct](https://contentforgeframework.github.io/contentforge/code-of-conduct/) to understand our community standards.
-13. Check out our [Development Guide](https://contentforgeframework.github.io/contentforge/development/) for more information on how to set up your development environment and contribute to the project.
-14. Read our [Release Notes](https://contentforgeframework.github.io/contentforge/release-notes/) to stay updated on the latest changes and improvements.
+11. Check out our [Contributing Guide](https://contentforgeframework.github.io/contentforge/contributing/) for more
+    details on how to contribute.
+12. Read our [Code of Conduct](https://contentforgeframework.github.io/contentforge/code-of-conduct/) to understand our
+    community standards.
+13. Check out our [Development Guide](https://contentforgeframework.github.io/contentforge/development/) for more
+    information on how to set up your development environment and contribute to the project.
+14. Read our [Release Notes](https://contentforgeframework.github.io/contentforge/release-notes/) to stay updated on the
+    latest changes and improvements.
 
 ## License
+
 This project is licensed under the Apache License 2.0. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
+
 If you have any questions or feedback, please feel free to reach out to us:
 ![GitHub](https://img.shields.io/badge/GitHub-ContentForge-blue?style=flat-square&logo=github)
 ![mailto:ContentForgeTeam@outlook.com](https://img.shields.io/badge/Email-ContentForgeTeam%40outlook.com-blue?style=flat-square&logo=gmail)
