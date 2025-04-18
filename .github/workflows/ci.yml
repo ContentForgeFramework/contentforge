@@ -27,6 +27,7 @@ jobs:
                     pip install poetry
                     poetry config virtualenvs.create false
                     poetry install --with dev,test
+                    poetry run pre-commit run --all-files --show-diff-on-failure
 
             -   name: Install typing stubs
                 run: |
